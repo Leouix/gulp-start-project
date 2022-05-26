@@ -13,7 +13,7 @@ async function html() {
         .pipe(include({
             prefix: '@@'
         }))
-        .pipe(dest('dist'))
+        .pipe(dest('public'))
 }
 
 function scss() {
@@ -24,16 +24,16 @@ function scss() {
         }))
         .pipe(csso())
         .pipe(concat('index.css'))
-        .pipe(dest('dist'))
+        .pipe(dest('public'))
 }
 
 function clear() {
-    return del('dist')
+    return del(['public/!css', 'public/!images'])
 }
 
 async function serve() {
     sync.init({
-        server: './dist'
+        server: './public'
     })
 
     watch('src/**.html', series(html)).on('change', sync.reload)

@@ -1,4 +1,67 @@
-@@include('parts/header.html')
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="index.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Raleway:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+
+    <title>Land</title>
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="regular">
+            <div class="logo">
+                <img src="images/logo.png" alt="">
+                <p>Жилой комплекс</p>
+            </div>
+
+            <div class="burger-icon"></div>
+
+            <nav class="top-menu">
+                <ul>
+                    <a href="#footer">
+                        <li>О компании</li>
+                    </a>
+                    <a href="#distric">
+                        <li>Район</li>
+                    </a>
+                    <a href="#apartments">
+                        <li>Каталог квартир</li>
+                    </a>
+                    <a href="#questions">
+                        <li>Ипотека</li>
+                    </a>
+                    <a href="#footer">
+                        <li>Контакты</li>
+                    </a>
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+
 
     <section class="first-view">
 
@@ -152,4 +215,129 @@
     </section>
 
 
-@@include('parts/footer.html')
+
+
+
+
+    <footer id="footer">
+        <div class="regular footer-regular">
+            <div class="logo logo-footer footer-col">
+                <img src="images/logo.png" alt="">
+                <p>Жилой комплекс</p>
+            </div>
+            <div class="footer-col">
+                <ul>
+                    <li>О компании</li>
+                    <li>Район</li>
+                    <li>Каталог квартир</li>
+                    <li>Ипотека</li>
+                    <li>Контакты</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <ul>
+                    <li>О компании</li>
+                    <li>Район</li>
+                    <li>Каталог квартир</li>
+                    <li>Ипотека</li>
+                    <li>Контакты</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <ul>
+                    <li>Адрес: Наб. реки Фонтанки 10-15</li>
+                    <li>Телефон: 8 (812) 123-45-67</li>
+                    <li>Отдел продаж: 10:00 - 20:00</li>
+                    <li>E-mail: vip@housevip.ru</li>
+                    <li>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <div class="toTop"></div>
+
+    <style>
+        .toTop {
+            position: fixed;
+            right: 2rem;
+            bottom: 2rem;
+            background: url('images/next.png');
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            transform: rotate(270deg);
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+
+        $(".toTop").click(function () {
+            $("html, body").animate({ scrollTop: 0 }, 400);
+        });
+
+        $(".burger-icon").click(function () {
+
+            if ($(".top-menu").is(':hidden')) {
+                $(".top-menu").addClass('mobile-open');
+                $(".top-menu").slideToggle("fast");
+            } else {
+                $(".top-menu").slideToggle("fast", function () {
+                    $(".top-menu").removeClass('mobile-open');
+                });
+            }
+
+        });
+
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // $('.burger-icon').click(function () {
+
+        //     if ($('.top-menu').hasClass('visible')) {
+        //         $('.top-menu').hide();
+        //         $('.top-menu').removeClass('visible');
+        //     } else {
+        //         $('.top-menu').show();
+        //         $('.top-menu').addClass('visible');
+        //     }
+
+        // })
+
+        jQuery(document).ready(function ($) {
+            $('.play-button').click(function () {
+                $('video').trigger('play');
+                $(this).hide();
+            });
+            $('#video-movie').click(function () {
+                if ($('video')[0].paused) {
+                    $('video').trigger('play');
+                    $('.play-button').hide();
+                } else {
+                    $('video').trigger('pause');
+                    $('.play-button').show();
+                }
+            })
+        });
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+</body>
+
+</html>
+
